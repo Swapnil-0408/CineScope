@@ -17,49 +17,16 @@
    </header>
    <main>
     <h2>🔥 Trending Movies </h2>
-    <div class="movie-grid">
-       <div class="movie-card">
-        <div class="poster"></div>
-        <h3>Avenger: Endgame</h3>
-        <p>⭐8.4</p>
-       </div>
-       <div class="movie-card">
-        <div class="poster"></div>
-        <h3>Avenger:infinty war</h3>
-        <p>⭐8.5</p>
-       </div>
-       <div class="movie-card">
-        <div class="poster"></div>
-        <h3>The Goodfather</h3>
-        <p>⭐9.2</p>
-       </div>
-       <div class="movie-card">
-        <div class="poster"></div>
-        <h3>The Dark Knight</h3>
-        <p>⭐9.0</p>
-       </div>
-       <div class="movie-card">
-        <div class="poster"></div>
-        <h3>Inception</h3>
-        <p>⭐8.8</p>
-       </div>
-       <div class="movie-card">
-        <div class="poster"></div>
-        <h3>titanic</h3>
-        <p>⭐7.9</p>
-       </div>
-       <div class="movie-card">
-        <div class="poster"></div>
-        <h3>Fast and Furious</h3>
-        <p>⭐8.0</p>
-       </div>
-       <div class="movie-card">
-        <div class="poster"></div>
-        <h3>Avatar</h3>
-        <p>⭐8.4</p>
-       </div>
-    </div>
+    <div class="movie-grid" id="movieGrid"></div>
    </main>
+   <div id="movieModal" class="modal hidden">
+    <div class="modal-content">
+      <span id="closeModal">&times;</span>
+      <div id ="modalBody"></div>
+    </div>
+   </div>
    <script src="js/script.js"></script>
+   <script src="js/api.js">
+   </script>
   </body>
 </html>
