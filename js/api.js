@@ -1,13 +1,24 @@
 const API_KEY = "45c2abfbde6d83b917cee0c666f1bfcc";
 
 const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
-
-fetch(URL)
-    .then(response => response.json())
-    .then(data => {
-        const movies=data.results;
-        const movieGrid=document.querySelector("#movieGrid");
-        for(let i =0;i<movies.length;i++)
+const searchInput = document.querySelector("#searchInput");
+const searchBtn = document.querySelector("#searchBtn");
+searchBtn.addEventListener("click",function(){
+const query=searchInput.value.trim();
+if(query===""){
+  alert("Please enter a movie name.");
+  return;
+}
+searchMovie(query);
+});
+searchInput.addEventListener("keydown",function(event){
+  if(event.key==="Enter"){
+    searchBtn.click();
+  }
+});
+function displayMovies(movies){
+  const movieGrid=document.querySelector("#movieGrid");
+  for(let i =0;i<movies.length;i++)
         {
          let card=`
          <div class="movie-card" data-id="${movies[i].id}">
@@ -21,21 +32,37 @@ fetch(URL)
          `;
          movieGrid.innerHTML+=card;
         }
-        const cards = document.querySelectorAll(".movie-card");
-        cards.forEach(card=>{
-          card.addEventListener("click",()=>{
-            getMovieDetails(card.dataset.id);
-          });
-        });
+  const cards = document.querySelectorAll(".movie-card");
+    cards.forEach(card=>{
+    card.addEventListener("click",()=>{     getMovieDetails(card.dataset.id);
+      });
+  });
+}
+fetch(URL)
+    .then(response => response.json())
+    .then(data => {
+        const movies=data.results;
+        displayMovies(movies);
         });
     function searchMovie(query){
       const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`;
       fetch(searchURL)
       .then(response=>response.json())
       .then(data=> {
-        console.log(data.results);
+        const movies=data.results;
+        const movieGrid = document.querySelector("#movieGrid");
+        movieGrid.innerHTML = "";
+        if (movies.length === 0) {
+
+    movieGrid.innerHTML = `
+        <h2>No movies found 😔</h2>
+    `;
+
+    return;
+}
+        displayMovies(movies);
       });
-    }searchMovie("Batman");
+    }
     function getMovieDetails(movieId){
       const detailsURL =
 `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`;
@@ -89,7 +116,7 @@ if(data.overview===""|| data.overview===null){
         </p>
 
         <p class="runtime">
-            ⏱ ${runtimetext};
+            ⏱ ${runtimetext}
         </p>
 
         <p class="genres">
@@ -103,11 +130,40 @@ if(data.overview===""|| data.overview===null){
         <p class="overview">
             ${overviewText}
         </p>
-
+        <button id="watchLaterBtn">
+             ❤️ Watch Later
+             </button>
+             
     </div>
 
 </div>
-`;
+`;document.querySelector("#watchLaterBtn")
+.addEventListener("click",function() {
+  let watchLater = localStorage.getItem("watchLater");
+  if(watchLater===null){
+    watchLater=[];
+  }else{
+    watchLater=JSON.parse(watchLater);
+  }
+  let movie={
+    id:data.id,
+    title:data.title,
+    poster_path:data.poster_path,
+    vote_average:data.vote_average
+  };
+  let exists=watchLater.some(function(movieItem){
+    return movieItem.id===movie.id;
+  });
+  if(!exists){
+    watchLater.push(movie);
+    localStorage.setItem(
+      "watchLater",JSON.stringify(watchLater)
+    );
+    alert("✅ Movie added to Watch Later!");
+  }else{
+    alert("ℹ️ Movie already exists in Watch Later.");
+  }
+  });
   openModal();
 });
     }
@@ -127,4 +183,14 @@ function closeModal(){
 }document
     .querySelector("#closeModal")
     .addEventListener("click", closeModal);
-    
+const modal=document.querySelector("#movieModal");
+modal.addEventListener("click",function(event){
+  if(event.target === modal){
+        closeModal();
+    }
+}); 
+  document.addEventListener("keydown", function(event){
+    if(event.key==="Escape"){
+        closeModal();
+    }
+});
