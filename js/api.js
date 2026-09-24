@@ -16,6 +16,19 @@ searchInput.addEventListener("keydown",function(event){
     searchBtn.click();
   }
 });
+const hiddenGemBtn = document.getElementById("hiddenGemBtn");
+hiddenGemBtn.addEventListener("click", hiddenGems);
+async function hiddenGems() {
+  const response=await fetch(URL);
+  const data=await response.json();
+  const movies=data.results;
+  const hiddenMovies = movies.filter(movie=>{
+    return movie.vote_average>=7.5&& movie.popularity<100;
+  });
+  console.log(hiddenMovies.length);
+  console.log(hiddenMovies);
+  displayMovies(hiddenMovies);
+}
 const surpriseBtn = document.getElementById("surpriseBtn");
 surpriseBtn.addEventListener("click", surpriseMovie);
 async function surpriseMovie() {
@@ -27,7 +40,6 @@ async function surpriseMovie() {
   const randomMovie = movies[randomIndex];
   getMovieDetails(randomMovie.id);
   console.log(randomMovie);
- 
 }
 function displayMovies(movies){
   const movieGrid=document.querySelector("#movieGrid");
@@ -44,7 +56,7 @@ function displayMovies(movies){
          <p>📅 ${movies[i].release_date}</p>
          </div>
          `;}
-         movieGrid.innerHTML+=cardsHTML;
+         movieGrid.innerHTML=cardsHTML;
   const cards = document.querySelectorAll(".movie-card");
     cards.forEach(card=>{
     card.addEventListener("click",()=>{     getMovieDetails(card.dataset.id);
