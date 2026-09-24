@@ -16,11 +16,25 @@ searchInput.addEventListener("keydown",function(event){
     searchBtn.click();
   }
 });
+const surpriseBtn = document.getElementById("surpriseBtn");
+surpriseBtn.addEventListener("click", surpriseMovie);
+async function surpriseMovie() {
+  const randomPage=Math.floor(Math.random()*50+1);
+  const response = await fetch(`${URL}&page=${randomPage}`);
+  const data = await response.json();
+  const movies = data.results;
+  const randomIndex = Math.floor(Math.random() * movies.length);
+  const randomMovie = movies[randomIndex];
+  getMovieDetails(randomMovie.id);
+  console.log(randomMovie);
+ 
+}
 function displayMovies(movies){
   const movieGrid=document.querySelector("#movieGrid");
+  let cardsHTML="";
   for(let i =0;i<movies.length;i++)
         {
-         let card=`
+         cardsHTML+=`
          <div class="movie-card" data-id="${movies[i].id}">
          <img
          class="poster"
@@ -29,9 +43,8 @@ function displayMovies(movies){
          <p>⭐${movies[i].vote_average.toFixed(1)}</p>
          <p>📅 ${movies[i].release_date}</p>
          </div>
-         `;
-         movieGrid.innerHTML+=card;
-        }
+         `;}
+         movieGrid.innerHTML+=cardsHTML;
   const cards = document.querySelectorAll(".movie-card");
     cards.forEach(card=>{
     card.addEventListener("click",()=>{     getMovieDetails(card.dataset.id);
