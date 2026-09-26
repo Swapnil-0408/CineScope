@@ -1,6 +1,34 @@
 const API_KEY = "45c2abfbde6d83b917cee0c666f1bfcc";
 
 const URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
+const moodButtons=document.querySelectorAll(".mood-btn");
+moodButtons.forEach(button=>{
+  button.addEventListener("click", async function(){
+    const mood=button.dataset.mood;
+    let genreId;
+    if( mood==="happy"){
+      genreId=35;
+    }
+    else if( mood==="romantic"){
+      genreId=10749;
+    }
+     else if( mood==="thrilling"){
+      genreId=53;
+    }
+    else if( mood==="sad"){
+      genreId=18;
+    }
+    else if( mood==="adventure"){
+      genreId=12;
+    }
+    console.log(genreId);
+    const discoverURL =
+`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`;
+const response = await fetch(discoverURL);
+const data = await response.json();
+displayMovies(data.results);
+  });
+});
 const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchBtn");
 searchBtn.addEventListener("click",function(){
