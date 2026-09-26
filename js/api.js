@@ -25,9 +25,43 @@ async function hiddenGems() {
   const hiddenMovies = movies.filter(movie=>{
     return movie.vote_average>=7.5&& movie.popularity<100;
   });
-  console.log(hiddenMovies.length);
-  console.log(hiddenMovies);
   displayMovies(hiddenMovies);
+}
+const runtimeFilter=document.getElementById("runtimeFilter");
+runtimeFilter.addEventListener("change",runtimeMovies);
+async function runtimeMovies(){
+ const selectedRuntime=runtimeFilter.value;
+ console.log(selectedRuntime);
+ const response = await fetch(URL);
+const data = await response.json();
+const movies = data.results;
+const movieDetails= await Promise.all(
+  movies.map(async(movie)=>
+  {
+    const response=await fetch(
+      `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${API_KEY}`
+    );
+    return await response.json();
+  })
+);
+let filteredMovies = [];
+if (selectedRuntime === "short") {
+    filteredMovies = movieDetails.filter(movie => movie.runtime < 90);
+}
+else if (selectedRuntime === "medium") {
+    filteredMovies = movieDetails.filter(movie =>
+        movie.runtime >= 90 && movie.runtime <= 120
+    );
+}
+else if (selectedRuntime === "long") {
+    filteredMovies = movieDetails.filter(movie => movie.runtime > 120);
+}
+if (filteredMovies.length === 0) {
+    document.querySelector("#movieGrid").innerHTML =
+        "<h2>No movies found for this runtime ⏱️</h2>";
+    return;
+}
+displayMovies(filteredMovies);
 }
 const surpriseBtn = document.getElementById("surpriseBtn");
 surpriseBtn.addEventListener("click", surpriseMovie);
