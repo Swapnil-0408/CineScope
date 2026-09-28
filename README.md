@@ -1,125 +1,147 @@
-# 🎬 CineScope – Movie Discovery Assistant
+# 🎬 CineScope
 
-CineScope is a movie discovery web application built using **HTML, CSS, and JavaScript** with the **TMDB (The Movie Database) API**.
+CineScope is a modern movie discovery web application built using **HTML, CSS, and JavaScript**. It uses the **TMDB (The Movie Database) API** to let users discover trending movies, search for films, save favorites, and receive personalized movie recommendations.
 
-Unlike a traditional movie database, CineScope aims to help users **discover and decide what to watch** by providing an intuitive interface to explore trending movies, search for titles, and view detailed movie information.
-
-> 🚀 This project is currently under active development and new discovery features are being added regularly.
+🌐 **Live Demo:** https://cinescope-swapnil.netlify.app/
 
 ---
-
+## 📸 Preview
+> *(Add screenshots of your homepage, movie details modal, and Watch Later page here.)*
+---
 ## ✨ Features
+### 🎥 Movie Discovery
+- View daily trending movies
+- Search movies by title
+- View detailed movie information
+- Beautiful responsive movie cards
 
-### ✅ Current Features
+### ❤️ Watch Later
+- Save movies to Watch Later
+- Remove movies from Watch Later
+- Data stored using Local Storage
+- Persistent even after page refresh
 
-- 🔥 Browse Trending Movies
-- 🔍 Search Movies
-- 🎬 Movie Details Popup
-- ⭐ Movie Ratings
-- 📅 Release Date
-- ⏱ Runtime
-- 🎭 Genres
-- 📝 Movie Overview
-- 📱 Responsive Design (Desktop & Mobile)
+### 🎲 Surprise Me
+- Get a completely random movie recommendation from TMDB
+
+### 💎 Hidden Gems
+- Discover highly-rated but less popular movies
+
+### ⏱ Runtime Filter
+Filter movies based on runtime:
+- Less than 90 minutes
+- 90–120 minutes
+- More than 120 minutes
+
+### 😊 Mood Recommendation
+Get movie recommendations based on your mood:
+- 😊 Happy
+- ❤️ Romantic
+- 😱 Thrilling
+- 😢 Sad
+- 🤩 Adventure
+
+### 🎨 User Experience
+- Dark modern UI
+- Responsive navigation bar
+- Movie details popup
+- Keyboard support (Escape key closes modal)
+- Smooth hover effects
 
 ---
-
-## 🚀 Upcoming Features
-
-- 🎲 Surprise Me
-- 😊 Mood-Based Movie Recommendations
-- ⏱ Filter Movies by Runtime
-- 💎 Hidden Gems
-- ❤️ Watch Later List
-- ❌ Close Modal by Clicking Outside
-- ⌨ Close Modal using ESC Key
-- 🔄 Loading Animations
-- ⚠ Error Handling
-- 🎨 UI Improvements & Animations
-
----
-
-## 🛠 Technologies Used
+# 🛠 Tech Stack
 
 - HTML5
 - CSS3
 - JavaScript (ES6)
-- Fetch API
 - TMDB API
-
+- Local Storage
+- Fetch API
 ---
-
-## 📂 Project Structure
-
+# 📂 Project Structure
 ```
 CineScope/
 │
-├── css/
-│   └── style.css
-│
-├── js/
-│   ├── api.js
-│   └── script.js
-│
 ├── index.html
+├── watchlater.html
+├── api.js
+├── watchlater.js
+├── style.css
+├── watchlater.css
+├── images/
+│
 └── README.md
 ```
-
 ---
-
-## 📸 Screenshots
-
-> *(Screenshots will be added after the UI is finalized.)*
-
----
-
-## 🚀 Getting Started
-
-### Clone the repository
-
+# 🚀 Installation
+Clone the repository
 ```bash
-git clone https://github.com/Swapnil-0408/cinescope.git
+git clone https://github.com/Swapnil-0408/CineScope.git
 ```
-
-### Open the project
-
-Simply open **index.html** in your browser.
-
----
-
-## 🔑 API
-
-This project uses the **TMDB API**.
-
-To run it yourself:
-
-1. Create a free account on TMDB.
-2. Generate an API Key.
-3. Replace the API key inside:
-
-```javascript
-const API_KEY = "YOUR_API_KEY";
+Go inside the folder
+```bash
+cd CineScope
 ```
-
+Open
+```
+index.html
+```
+using Live Server.
 ---
-
-## 🎯 Project Goal
-
-The goal of CineScope is **not just to display movie information**, but to help users quickly decide what to watch through simple and useful discovery tools.
-
-Future updates will focus on solving the common problem of **decision fatigue** when choosing movies.
-
+# 🔑 API
+This project uses
+**The Movie Database (TMDB) API**
+https://www.themoviedb.org/
 ---
-
-## 👨‍💻 Author
-
+# 📚 JavaScript Concepts Used
+- Fetch API
+- Async / Await
+- Promises
+- Event Listeners
+- DOM Manipulation
+- Local Storage
+- Array Methods
+  - map()
+  - filter()
+  - some()
+- Template Literals
+- Conditional Rendering
+---
+# 🎯 Learning Outcomes
+During this project I learned:
+- Working with REST APIs
+- Fetching real-time data
+- Building responsive layouts
+- Managing Local Storage
+- Writing asynchronous JavaScript
+- Creating reusable functions
+- Improving UI/UX with CSS
+- Debugging JavaScript errors
+---
+# 📈 Future Improvements (Version 2.0)
+- 🎬 Movie Trailers
+- ⭐ Genre Filter
+- 👥 Cast & Crew Information
+- 🎭 Similar Movie Recommendations
+- 🔥 Top Rated Movies
+- 📺 TV Shows Support
+- 🌍 Multi-language Support
+- 🌙 Dark/Light Theme
+- 📱 Better Mobile UI
+- 🔐 Secure API Key using Serverless Functions
+---
+# 👨‍💻 Developer
 **Swapnil Gupta**
-
-- GitHub: https://github.com/Swapnil-0408
-- LinkedIn: https://www.linkedin.com/in/swapnil-gupta-4aa382376
-
+Computer Science Engineering Student
+📧 LinkedIn
+https://www.linkedin.com/in/swapnil-gupta-4aa382376
+💻 GitHub
+https://github.com/Swapnil-0408
 ---
-
-## ⭐ If you like this project
-
-Give it a ⭐ on GitHub!
+# ⭐ Support
+If you like this project, please consider giving it a ⭐ on GitHub.
+It motivates me to build more open-source projects!
+---
+# 📜 License
+This project is created for educational purposes.
+Movie data provided by **TMDB API**.
