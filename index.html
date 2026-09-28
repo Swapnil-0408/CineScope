@@ -12,23 +12,39 @@
       <span>🎬</span>
       <h1>cinescope</h1>
     </div>
-    <input type="text" id="searchInput" placeholder="Search movies...">
-    <button id="searchBtn">Search</button>
-    <a href="watchlater.html">❤️ Watch Later</a>
-    <div class="buttons">
-    <button id="surpriseBtn">🎲 surprise Me </button>
-    <button id="hiddenGemBtn">💎 Hidden Gems</button> 
-    </div>
+  <div class="search-box">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search movies...">
+    <button id="searchBtn">
+        Search
+    </button>
+</div>
+    <div class="feature-buttons">
+    <a href="watchlater.html" class="feature-btn">
+        ❤️ Watch Later
+    </a>
+    <button id="surpriseBtn" class="feature-btn">
+        🎲 Surprise Me
+    </button>
+    <button id="hiddenGemBtn" class="feature-btn">
+        💎 Hidden Gems
+    </button>
     <select id="runtimeFilter">
-    <option value="">⏱ Runtime Filter</option>
-    <option value="short">Less than 90 min</option>
-    <option value="medium">90 - 120 min</option>
-    <option value="long">More than 120 min</option>
-</select>
+        <option value="">⏱ Runtime Filter</option>
+        <option value="short">Less than 90 min</option>
+        <option value="medium">90 - 120 min</option>
+        <option value="long">More than 120 min</option>
+    </select>
+</div>
   </header>
    <main>
     <div class="mood-container">
-      <h3> How are you feeling today?</h3>
+      <h2 class="mood-heading">😊 How are you feeling today?</h2>
+<p class="mood-subtitle">
+    Choose a mood and we'll recommend movies you'll enjoy.
+</p>
        <button class="mood-btn" data-mood="happy">😊 Happy</button>
     <button class="mood-btn" data-mood="romantic">❤️ Romantic</button>
     <button class="mood-btn" data-mood="thrilling">😱 Thrilling</button>
