@@ -6,7 +6,11 @@ CineScope is a modern movie discovery web application built using **HTML, CSS, a
 
 ---
 ## 📸 Preview
-> *(Add screenshots of your homepage, movie details modal, and Watch Later page here.)*
+> <img width="948" height="538" alt="image" src="https://github.com/user-attachments/assets/de534412-3a70-4035-92c4-b20eff28cc07" />
+<img width="957" height="530" alt="image" src="https://github.com/user-attachments/assets/ffa0355a-0b46-4b2d-a30e-8f4845294753" />
+<img width="940" height="531" alt="image" src="https://github.com/user-attachments/assets/9ab64342-4060-44a5-bfc2-fc38355cb7dc" />
+
+
 ---
 ## ✨ Features
 ### 🎥 Movie Discovery
