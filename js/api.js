@@ -259,14 +259,14 @@ if(data.overview===""|| data.overview===null){
     document
         .querySelector("#movieModal")
         .classList.remove("hidden");
-
+        document.body.style.overflow = "hidden";
 }
 function closeModal(){
 
     document
         .querySelector("#movieModal")
         .classList.add("hidden");
-
+         document.body.style.overflow = "";
 }document
     .querySelector("#closeModal")
     .addEventListener("click", closeModal);
